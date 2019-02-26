@@ -12,7 +12,8 @@ and will be shown a search list including titles, authors, cover images, and a s
 `npm init` with node.js installed, and then `npm i` to install node package dependencies express, ejs, dotenv, and superagent
 
 ## Architecture
-
+Uses express to do server heavy-lifting, ejs to embed javascript and partials into 'public/' ejs views, 
+uses superagent to read Google's free Book API
 
 ## Change Log
 #### 02-26-2019 9:37am - Application now has a fully-functional framework, with a stand-in filepath to index page
@@ -47,6 +48,17 @@ Start time: 9:54am
 Finish time: 10:25am
 
 Actual time needed to complete: 27 min
+
+#### 02-26-2019 10:40am - Book instances create and render on new view '/searches'
+Number and name of feature: Feature 4, Create an Error View, in case our app is breaking, or the user sends a bad search request
+
+Estimate of time needed to complete: 1 hr
+
+Start time: 10:43am
+
+Finish time: 11:35am
+
+Actual time needed to complete: 52 min
 
 ## Credits and Collaborations
 Powered by: Google Books API
