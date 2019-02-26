@@ -15,7 +15,7 @@ and will be shown a search list including titles, authors, cover images, and a s
 
 
 ## Change Log
-### 02-26-2019 9:37pm - Application now has a fully-functional framework, with a stand-in filepath to index page
+#### 02-26-2019 9:37pm - Application now has a fully-functional framework, with a stand-in filepath to index page
 Number and name of feature: Feature 1, Fast Load-up and intitial deployment
 
 Estimate of time needed to complete: 30 min
