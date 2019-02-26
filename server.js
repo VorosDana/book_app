@@ -30,11 +30,16 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 // HELPER FUNCTIONS
 function Book(info) {
   const placeHolder = 'https://i.imgur.com/J5LVHEL.jpg';
-  this.picture = info.imageLinks.smallThumbnail || placeHolder;
-  this.mouseover = info.imageLinks.thumbnail || placeHolder;
+  if (info.imageLinks) {
+    this.picture = info.imageLinks.smallThumbnail || placeHolder;
+    this.mouseover = info.imageLinks.thumbnail || placeHolder;
+  } else {
+    this.picture = placeHolder;
+    this.mouseover = placeHolder;
+  }
   this.title = info.title || 'No Title Avaialble';
   this.authors = info.authors;
-  this.description = info.description;
+  this.description = info.description || 'No description available';
   this.link = info.infoLink;
 }
 
