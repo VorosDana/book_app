@@ -36,7 +36,7 @@ function Book(info) {
   this.title = info.title || 'No Title Avaialble';
   this.authors = info.authors;
   this.description = info.description;
-  
+  this.link = info.infoLink;
 }
 
 // Note that .ejs file extension is not required
@@ -60,7 +60,7 @@ function createSearch(request, response) {
 
   superagent.get(url)
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
-    .then(results => response.render('pages/searches/show', { searchesResults: results }));
+    .then(results => response.render('pages/searches/show', { searchResults: results }));
 
   // how will we handle errors?
 }
