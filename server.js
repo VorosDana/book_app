@@ -59,16 +59,17 @@ function createSearch(request, response) {
   superagent.get(url)
     .then(apiResponse => {
       if (apiResponse.body.totalItems > 0) {
-      apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo))
+        return apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo));
       } else {
         response.render('pages/error', { err: 400, errType: 'Bad Request, Buddy', msg: `No results found for ${request.body.search[1]}: ${request.body.search[0]}` })
       }
     })
-    .then(results => response.render('pages/searches/show', { searchResults: results }));
+    .then(results => response.render('pages/searches/show', { searchResults: results }))
+    .catch('err', handleErrors);
 
   // how will we handle errors?
 }
 
-function handleErrors(request, response) {
+function handleErrors(err, request, response) {
   response.render('pages/error', { err: 500, errType: 'Internal Server Error', msg: 'Something has gone wrong' } );
 }
