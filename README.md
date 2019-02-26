@@ -15,8 +15,8 @@ and will be shown a search list including titles, authors, cover images, and a s
 
 
 ## Change Log
-#### 02-26-2019 9:37pm - Application now has a fully-functional framework, with a stand-in filepath to index page
-Number and name of feature: Feature 1, Fast Load-up and intitial deployment
+#### 02-26-2019 9:37am - Application now has a fully-functional framework, with a stand-in filepath to index page
+Number and name of feature: Feature 1, Fast Load-up and frame-work
 
 Estimate of time needed to complete: 30 min
 
@@ -25,6 +25,28 @@ Start time: 9am
 Finish time: 9:37
 
 Actual time needed to complete: 37 min
+
+#### 02-26-2019 9:54am - Heroku Deployment fully functional, with no errors
+Number and name of feature: Feature 2, Heroku initial deployment
+
+Estimate of time needed to complete: 15 min
+
+Start time: 9:37am
+
+Finish time: 9:54am
+
+Actual time needed to complete: 27 min
+
+#### 02-26-2019 10:21am - Book instances create and render on new view '/searches'
+Number and name of feature: Feature 3, Render array of Book instances on 'show.ejs'
+
+Estimate of time needed to complete: 1.5 hr
+
+Start time: 9:54am
+
+Finish time: 10:25am
+
+Actual time needed to complete: 27 min
 
 ## Credits and Collaborations
 Powered by: Google Books API
