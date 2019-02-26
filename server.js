@@ -6,7 +6,7 @@ const superagent = require('superagent');
 
 // Application Setup
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 // Application Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -23,12 +23,11 @@ app.get('/', newSearch);
 app.post('/searches', createSearch);
 
 // Catch-all
-app.get('*', (request, response) => response.status(404).send('This route does not exist'));
+app.get('*', (request, response) => response.render('pages/error', { err: 404, errType: 'Bad Route', msg: 'This Route does not exist' }));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 // HELPER FUNCTIONS
-
 function Book(info) {
   const placeHolder = 'https://i.imgur.com/J5LVHEL.jpg';
   this.picture = info.imageLinks.smallThumbnail || placeHolder;
@@ -46,7 +45,6 @@ function newSearch(request, response) {
 }
 
 // No API key required
-// Console.log request.body and request.body.search
 function createSearch(request, response) {
   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
 
@@ -59,8 +57,18 @@ function createSearch(request, response) {
   console.log(url);
 
   superagent.get(url)
-    .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
+    .then(apiResponse => {
+      if (apiResponse.body.totalItems > 0) {
+      apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo))
+      } else {
+        response.render('pages/error', { err: 400, errType: 'Bad Request, Buddy', msg: `No results found for ${request.body.search[1]}: ${request.body.search[0]}` })
+      }
+    })
     .then(results => response.render('pages/searches/show', { searchResults: results }));
 
   // how will we handle errors?
+}
+
+function handleErrors(request, response) {
+  response.render('pages/error', { err: 500, errType: 'Internal Server Error', msg: 'Something has gone wrong' } );
 }
