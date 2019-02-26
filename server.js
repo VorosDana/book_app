@@ -28,10 +28,15 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 // HELPER FUNCTIONS
-// Only show part of this to get students started
+
 function Book(info) {
   const placeHolder = 'https://i.imgur.com/J5LVHEL.jpg';
+  this.picture = info.imageLinks.smallThumbnail || placeHolder;
+  this.mouseover = info.imageLinks.thumbnail || placeHolder;
   this.title = info.title || 'No Title Avaialble';
+  this.authors = info.authors;
+  this.description = info.description;
+  
 }
 
 // Note that .ejs file extension is not required

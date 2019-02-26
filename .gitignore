@@ -64,3 +64,5 @@ Session.vim
 # auto-generated tag files
 tags
 
+# env file
+.env
