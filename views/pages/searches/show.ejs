@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Best Books!</h1>
+    </header>
+
+    <main>
+      <h2>Search Results</h2>
+
+      <% searchResults.forEach(book => { %>
+      <li>
+        <a href= <%= book.link %></a><img src= <%= book.picture %> alt= <%= book.title %> /></a>
+        <h3> <%= book.title %> </h3>
+        <h4> <%= book.authors.join(', ') %> </h4>
+        <p> <%= book.description %> </p>
+      </li>
+      <% }) %>
+    </main>
+  </body>
+</html>
