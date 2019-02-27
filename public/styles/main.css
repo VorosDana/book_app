@@ -42,7 +42,7 @@ fieldset {
 
 label span {
   display: inline-block;
-  width: 15%;
+  width: 3em;
 }
 
 input[type="text"] {
@@ -50,7 +50,7 @@ input[type="text"] {
   /* height: 20px; */
   margin: 0 auto 1.5em;
   width: 80%;
-  padding: 1.5em;
+  padding: 1em;
   border: 0px;
 }
 
