@@ -21,9 +21,11 @@
         <h3> <%= book.title %> </h3>
         <h4> <%= book.authors.join(', ') %> </h4>
         <p> <%= book.description %> </p>
+        <button value="Add to your Collection" name="bookshelf">Add to your Collection</button>
       </li>
       <% }) %>
     </ul>
     </main>
+    <% if(searchResults){ var books = searchResults } %>
   </body>
 </html>
