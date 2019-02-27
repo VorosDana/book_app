@@ -33,6 +33,10 @@ app.get('/form', newSearch);
 // Creates a new search to the Google Books API
 app.post('/searches', createSearch);
 
+app.post('/addToCollection', addToCollection);
+
+app.get('/books/:id', bookDetails);
+
 // Catch-all
 app.get('*', (request, response) => response.render('pages/error', { err: 404, errType: 'Bad Route', msg: 'This Route does not exist' }));
 
@@ -59,8 +63,9 @@ function Book(info) {
 // Note that .ejs file extension is not required
 function getBookshelf(request, response) {
   client.query(`SELECT * FROM books`)
-  .then(books => (response.render('pages/index', { searchResults: books.rows})));
+    .then(books => (response.render('pages/index', { searchResults: books.rows })));
   app.use(express.static('./public'));
+
 }
 
 function newSearch(request, response) {
@@ -94,6 +99,16 @@ function createSearch(request, response) {
   // how will we handle errors?
 }
 
+function addToCollection(request, response) {
+  const SQL = 'INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)'
+  const values = [request.body.author, request.body.title, request.body.isbn, request.body.image_url, request.body.description, request.body.bookshelf]
+
+  client.query(SQL, values)
+    .then(client.query(`SELECT * FROM books`))
+    .then((books) => {response.render('pages/index', {searchResults: books.rows})});
+  app.use(express.static('./public'));//location for other files like css
+}
+
 function handleErrors(err, request, response) {
-  response.render('pages/error', { err: 500, errType: 'Internal Server Error', msg: 'Something has gone wrong' } );
+  response.render('pages/error', { err: 500, errType: 'Internal Server Error', msg: 'Something has gone wrong' });
 }
