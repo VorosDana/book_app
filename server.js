@@ -35,8 +35,6 @@ app.post('/searches', createSearch);
 
 app.post('/addToCollection', addToCollection);
 
-app.get('/books/:id', bookDetails);
-
 // Catch-all
 app.get('*', (request, response) => response.render('pages/error', { err: 404, errType: 'Bad Route', msg: 'This Route does not exist' }));
 
