@@ -45,7 +45,7 @@ label span {
   width: 3em;
 }
 
-input[type="text"] {
+input[type="text"], input[type="url"] {
   display: inline-block;
   /* height: 20px; */
   margin: 0 auto 1.5em;
@@ -101,4 +101,12 @@ li * {
 li p {
   max-height: 12em;
   overflow-y: auto;
+}
+
+.collectionForm {
+  display: none;
+}
+
+input:checked + .collectionForm {
+  display: inline-block;
 }

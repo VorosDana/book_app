@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>Search Results</title>
-    <link href="styles/reset.css" rel="stylesheet" type="text/css">
-    <link href="styles/main.css" rel="stylesheet" type="text/css">
-  </head>
 
-  <body>
-    <header>
-      <h1>Best Books!</h1>
-    </header>
+<head>
+  <title>Search Results</title>
+  <link href="styles/reset.css" rel="stylesheet" type="text/css">
+  <link href="styles/main.css" rel="stylesheet" type="text/css">
+</head>
 
-    <main>
-      <h2>Search Results</h2>
-      <ul>
+<body>
+  <header>
+    <h1>Best Books!</h1>
+  </header>
+
+  <main>
+    <h2>Search Results</h2>
+    <ul>
       <% searchResults.forEach(book => { %>
       <li>
-        <a href= <%= book.link %>><img src= <%= book.picture %> alt= <%= book.title %> /></a>
+        <a href=<%= book.link %>><img src=<%= book.picture %> alt=<%= book.title %> /></a>
         <h3> <%= book.title %> </h3>
         <h4> <%= book.authors.join(', ') %> </h4>
         <p> <%= book.description %> </p>
+        <div>
+          <input type="checkbox" class="form-hider">Select This Book</input>
+          <form class="collectionForm" action="/addToCollection" method="POST">
+            <input type="text" name="title" placeholder="Title" value=<%- `"${book.title}"` %>></input>
+            <input type="text" name="author" placeholder="Author" value=<%- `"${book.authors.join(', ')}"` %>></input>
+            <input type="text" name="isbn" placeholder="ISBN" value=<%- `"${book.isbn}"` %>></input>
+            <input type="url" name="image_url" placeholder="Image url" value=<%- `"${book.picture}"` %>></input>
+            <input type="text" name="description" placeholder="Description"
+              value=<%- `"${book.description}"` %>></input>
+            <input type="text" name="bookshelf" placeholder="Bookshelf"></input>
+
+            <button type="submit" class="start">Add to Database</button>
+          </form>
+        </div>
       </li>
       <% }) %>
     </ul>
-    </main>
-  </body>
+  </main>
+</body>
+
 </html>
