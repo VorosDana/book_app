@@ -71,5 +71,15 @@ Finish time: 12:46pm
 
 Actual time needed to complete: 3 hr 31 min
 
+#### 02-27-2019 1:16pm - Create Detail View for each book in the user's bookshelf
+Number and name of feature: Features 6, Render User's saved books in an individual detail view when they search for a specific book.
+Estimate of time needed to complete: 1 hr
+
+Start time: 12:50am
+
+Finish time: 1:14pm
+
+Actual time needed to complete: 24 mins
+
 ## Credits and Collaborations
 Powered by: Google Books API
