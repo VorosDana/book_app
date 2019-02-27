@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Book Details</title>
+    <link href="/styles/reset.css" rel="stylesheet" type="text/css">
+    <link href="/styles/main.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <header>
+      <h1>Best Books!</h1>
+    </header>
+
+    <main>
+      <h2>Book Details</h2>
+
+      <section>
+        <a href= <%= book.link %>><img src= <%- `"${book.image_url}"` %> alt= <%= book.title %> /></a>
+        <h3> <%= book.title %> </h3>
+        <h4> <%= book.author %> </h4>
+        <p> <%= book.description %> </p>
+      </section>
+
+    </main>
+  </body>
+</html>

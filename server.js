@@ -105,8 +105,23 @@ function addToCollection(request, response) {
 
   client.query(SQL, values)
     .then(client.query(`SELECT * FROM books`))
-    .then((books) => {response.render('pages/index', {searchResults: books.rows})});
+    .then((books) => { response.render('pages/index', { searchResults: books.rows }) });
   app.use(express.static('./public'));//location for other files like css
+}
+
+function bookDetails(request, response) {
+  const SQL = 'SELECT * FROM books WHERE ID=$1';
+  const value = [request.params.id];
+
+  client.query(SQL, value)
+    .then(book => {
+      if (book.rows.length > 0) {
+        response.render('pages/details', { book: book.rows[0] });
+      } else {
+        response.render('pages/error', { err: 400, errType: 'Bad Request', msg: 'Book not found'})
+      }
+    }
+    )
 }
 
 function handleErrors(err, request, response) {
