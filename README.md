@@ -60,5 +60,16 @@ Finish time: 11:35am
 
 Actual time needed to complete: 52 min
 
+#### 02-27-2019 12:49pm - Save books to database and Load bookshelf on Pageload
+Number and name of feature: Features 5 (and 8), Render User's saved books on site load from sql database, and add ability to save Books from search view into database.
+
+Estimate of time needed to complete: 2 hr
+
+Start time: 9:15am
+
+Finish time: 12:46pm
+
+Actual time needed to complete: 3 hr 31 min
+
 ## Credits and Collaborations
 Powered by: Google Books API
