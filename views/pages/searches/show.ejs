@@ -21,11 +21,19 @@
         <h3> <%= book.title %> </h3>
         <h4> <%= book.authors.join(', ') %> </h4>
         <p> <%= book.description %> </p>
-        <button value="Add to your Collection" name="bookshelf">Add to your Collection</button>
+        <form action="/addToCollection" method="POST">
+          <input type="text" name="title" placeholder="Title" value=<%- `"${book.title}"` %> ></input>
+          <input type="text" name="author" placeholder="Author" value=<%- `"${book.authors.join(', ')}"` %> ></input>
+          <input type="text" name="isbn" placeholder="ISBN" value=<%- `"${book.isbn}"` %> ></input>
+          <input type="url" name="image_url" placeholder="Image url" value=<%- `"${book.picture}"` %> ></input>
+          <input type="text" name="description" placeholder="Description" value=<%- `"${book.description}"` %> ></input>
+          <input type="text" name="bookshelf" placeholder="Bookshelf"></input>
+
+          <button type="submit" class="start">Add to your Collection</button>
+        </form>
       </li>
       <% }) %>
     </ul>
     </main>
-    <% if(searchResults){ var books = searchResults } %>
   </body>
 </html>
