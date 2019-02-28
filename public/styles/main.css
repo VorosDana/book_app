@@ -75,15 +75,20 @@ li {
   border-radius: 5px;
 }
 
-li h3 {
+h3 {
   font-size: 3em;
-  width: 50%;
+  width: 90%;
+  margin-bottom: 0.5em;
+  font-style: italic;
+  max-height: 3.3em;
+  overflow-y: auto;
 }
 
-li h4 {
+h4 {
   font-size: 2em;
-  width: 50%;
+  width: 80%; 
   margin-bottom: 1em;
+  font-weight: bold;
 }
 
 li a {
@@ -98,9 +103,10 @@ li * {
   margin-bottom: .5em;
 }
 
-li p {
-  max-height: 12em;
+li p, section p {
+  max-height: 11.3em;
   overflow-y: auto;
+  width: 85%;
 }
 
 .collectionForm {
@@ -110,3 +116,17 @@ li p {
 input:checked + .collectionForm {
   display: inline-block;
 }
+
+section {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+section img {
+  width: 80%;
+}
+
