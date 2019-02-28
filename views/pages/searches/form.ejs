@@ -1,15 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <title>Book Collection</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/styles/reset.css" rel="stylesheet" type="text/css">
-    <link href="/styles/main.css" rel="stylesheet" type="text/css">
-  </head>
+
+  <%- include ../../layout/head.ejs %>
+
   <body>
-    <header>
-      Best Books!
-    </header>
+
+    <%- include ../../layout/header.ejs %>
+
     <main>
       <h2>Search by Title or Author</h2>
       <form action="/searches" method="post">
@@ -29,5 +27,8 @@
         <button type="submit">Search the Google Books API</button>
       </form>
     </main>
+
+    <%- include ../../layout/footer.ejs %>
+
   </body>
 </html>

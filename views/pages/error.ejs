@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>ErRoR<%= err %></title>
-  </head>
+
+  <%- include ../layout/head.ejs %>
+
   <body>
+
+    <%- include ../layout/header.ejs %>
+
     <main>
-      <h1>Error <%= err %>: <%= errType %></h1>
+      <h2>Error <%= err %>: <%= errType %></h2>
       <p><%= msg %></p>
       <a href='/'><button>Return to Home</button></a>
     </main>
+
+    <%- include ../layout/footer.ejs %>
+
   </body>
 </html>
