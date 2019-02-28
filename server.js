@@ -51,7 +51,7 @@ function Book(info) {
     // this.mouseover = placeHolder;
   }
   this.title = info.title || 'No title available';
-  this.authors = info.authors;
+  this.authors = info.authors ? info.authors.join('') : 'No authors available';
   this.isbn = info.industryIdentifiers ? `${info.industryIdentifiers[0].type} ${info.industryIdentifiers[0].identifier}` : 'No ISBN available';
   this.description = info.description || 'No description available';
   this.link = info.infoLink;
@@ -67,7 +67,7 @@ function getBookshelf(request, response) {
 }
 
 function newSearch(request, response) {
-  response.render('pages/form'); //location for ejs files
+  response.render('pages/searches/form'); //location for ejs files
   app.use(express.static('./public'));//location for other files like css
 }
 

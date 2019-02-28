@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>Book Details</title>
-    <link href="/styles/reset.css" rel="stylesheet" type="text/css">
-    <link href="/styles/main.css" rel="stylesheet" type="text/css">
-  </head>
+
+  <%- include ../layout/head.ejs %>
 
   <body>
-    <header>
-      <h1>Best Books!</h1>
-    </header>
+
+    <%- include ../layout/header.ejs %>
 
     <main>
       <h2>Book Details</h2>
@@ -21,7 +17,9 @@
         <h4> <%= book.author %> </h4>
         <p> <%= book.description %> </p>
       </section>
-
     </main>
+
+    <%- include ../layout/footer.ejs %>
+
   </body>
 </html>
