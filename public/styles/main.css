@@ -28,6 +28,7 @@ form {
   flex-flow: column;
   justify-content: space-evenly;
   align-items: center;
+  margin: 0 auto;
 }
 
 form * {
@@ -110,11 +111,45 @@ li p, section p {
 }
 
 .collectionForm {
-  display: none;
+  visibility: hidden;
+  max-height: 0em;
 }
 
 input:checked + .collectionForm {
-  display: inline-block;
+  visibility: visible;
+  max-height: unset;
+  width: 100%;
+  margin-top: 1em;
+}
+
+input[type="checkbox"] {
+  width: 0px;
+}
+
+.addBook {
+  height: 100%;
+  width: 100%;
+  background-color: hsl(249, 80%, 47%);
+  color: hsl(249, 80%, 97%);
+  border-radius: 7px;
+}
+
+label {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 0em;
+  padding-bottom: 1em;
+}
+
+label form input {
+  width: 90%;
+  margin: 0 auto 0.5em;
+}
+
+label button {
+  background-color: hsl(249, 80%, 67%);
 }
 
 section {
