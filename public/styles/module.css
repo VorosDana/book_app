@@ -1,0 +1,47 @@
+label span {
+  display: inline-block;
+  width: 3em;
+}
+
+input[type="text"], input[type="url"] {
+  display: inline-block;
+  /* height: 20px; */
+  margin: 0 auto 1.5em;
+  width: 80%;
+  padding: 1em;
+  border: 0px;
+}
+
+button {
+  padding: 1.5em;
+  width: 80%;
+  background-color: hsl(249, 80%, 47%);
+  color: hsl(249, 80%, 97%);
+  border: 0px;
+}
+
+
+.collectionForm {
+  visibility: hidden;
+  max-height: 0em;
+}
+
+input:checked + .collectionForm {
+  visibility: visible;
+  max-height: unset;
+  width: 100%;
+  margin-top: 1em;
+}
+
+label form input {
+  width: 90%;
+  margin: 0 auto 0.5em;
+}
+
+label button {
+  background-color: hsl(249, 80%, 67%);
+}
+
+input[type="checkbox"] {
+  width: 0px;
+}
