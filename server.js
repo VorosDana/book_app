@@ -4,6 +4,7 @@
 const express = require('express');
 const superagent = require('superagent');
 const pg = require('pg');
+const methodOverride = require('method-override');
 
 require('dotenv').config();
 
@@ -13,6 +14,15 @@ const PORT = process.env.PORT || 4000;
 
 // Application Middleware
 app.use(express.urlencoded({ extended: true }));
+
+app.use(methodOverride((request, response) => {
+  if(request.body && typeof request.body === 'object' && '_method' in request.body)
+  {
+    let method = request.body._method;
+    delete request.body._method;
+    return method;
+  }
+}))
 
 // Database Setup
 const client = new pg.Client(process.env.DATABASE_URL);
@@ -35,7 +45,9 @@ app.post('/searches', createSearch);
 
 app.post('/addToCollection', addToCollection);
 
-app.get('/books/:id', bookDetails)
+app.get('/books/:id', bookDetails);
+
+app.put('/updateBook', updateBook);
 
 // Catch-all
 app.get('*', (request, response) => response.render('pages/error', { err: 404, errType: 'Bad Route', msg: 'This Route does not exist' }));
@@ -122,6 +134,18 @@ function bookDetails(request, response) {
       }
     }
     )
+}
+
+function updateBook(request, response) {
+  let {author, title, isbn, image_url, description, bookshelf, id} = request.body;
+
+  const sql = 'UPDATE books SET author=$1, title=$2, isbn=$3, image_url=$4, description=$5, bookshelf=$6 WHERE id=$7'
+  let values = [author, title, isbn, image_url, description, bookshelf, parseInt(id)];
+
+  client.query(sql, values)
+    .then(() => {
+      response.redirect(`/books/${id}`);
+    })
 }
 
 function handleErrors(err, request, response) {

@@ -2,24 +2,47 @@
 
 <html>
 
-  <%- include ../layout/head.ejs %>
+<%- include ../layout/head.ejs %>
 
-  <body>
+<body>
 
-    <%- include ../layout/header.ejs %>
+  <%- include ../layout/header.ejs %>
 
-    <main>
-      <h2>Book Details</h2>
+  <main>
+    <h2>Book Details</h2>
 
-      <section>
-        <img src= <%- `"${book.image_url}"` %> alt= <%= book.title %> />
-        <h3> <%= book.title %> </h3>
-        <h4> <%= book.author %> </h4>
-        <p> <%= book.description %> </p>
-      </section>
-    </main>
+    <section>
+      <img src=<%- `"${book.image_url}"` %> alt=<%= book.title %> />
+      <p> Title: <%= book.title %> </p>
+      <p> Author: <%= book.author %> </p>
+      <p> ISBN: <%= book.isbn %> </p>
+      <p> Bookshelf: <%= book.bookshelf ? book.bookshelf : "None" %> </p>
+      <p> <%= book.description %> </p>
+      <!-- keeps styling used on search results -->
+      <div class="addBook">
+        <label>
+          <input type="checkbox" class="form-hider">Update This Book</input>
 
-    <%- include ../layout/footer.ejs %>
+          <form class="collectionForm" action="/updateBook" method="POST">
+            <input type="hidden" name="id" value=<%- `"${book.id}"` %></input> 
+            <input type="hidden" name="_method" value="put"></input>
+            <input type="text" name="title" placeholder="Title" value=<%- `"${book.title}"` %>></input>
+            <input type="text" name="author" placeholder="Author" value=<%- `"${book.author}"` %>></input>
+            <input type="text" name="isbn" placeholder="ISBN" value=<%- `"${book.isbn}"` %>></input>
+            <input type="url" name="image_url" placeholder="Image url" value=<%- `"${book.image_url}"` %>></input>
+            <input type="text" name="description" placeholder="Description"
+              value=<%- `"${book.description}"` %>></input>
+            <input type="text" name="bookshelf" placeholder="Bookshelf"></input>
 
-  </body>
+            <button type="submit" class="start">Add to Database</button>
+          </form>
+        </label>
+      </div>
+    </section>
+  </main>
+
+  <%- include ../layout/footer.ejs %>
+
+</body>
+
 </html>
