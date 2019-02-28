@@ -1,0 +1,84 @@
+form {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+}
+
+form * {
+  border-radius: 5px;
+}
+
+
+
+fieldset {
+  width: 80%;
+  background-color: #eee;
+  margin-bottom: 1.5em;
+  padding: 1em;
+}
+
+
+
+li {
+  width: 80%;
+  /* height: 40em; */
+  margin: 0 auto 1.5em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: hsl(249, 80%, 97%);
+  color: hsl(249, 80%, 47%);
+  padding: 4em 5em 5em;
+  border-radius: 5px;
+}
+
+li a {
+  width: 50%;
+}
+
+li img {
+  width: 100%;
+}
+
+li * {
+  margin-bottom: .5em;
+}
+
+
+li p, section p {
+  max-height: 11.3em;
+  overflow-y: auto;
+  width: 85%;
+}
+
+.addBook {
+  height: 100%;
+  width: 100%;
+  background-color: hsl(249, 80%, 47%);
+  color: hsl(249, 80%, 97%);
+  border-radius: 7px;
+}
+
+.addBook label {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 0em;
+  padding-bottom: 1em;
+}
+
+section {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  justify-content: space-evenly;
+}
+
+section img {
+  width: 80%;
+}
