@@ -35,6 +35,8 @@ app.post('/searches', createSearch);
 
 app.post('/addToCollection', addToCollection);
 
+app.get('/books/:id', bookDetails)
+
 // Catch-all
 app.get('*', (request, response) => response.render('pages/error', { err: 404, errType: 'Bad Route', msg: 'This Route does not exist' }));
 
@@ -102,8 +104,8 @@ function addToCollection(request, response) {
   const values = [request.body.author, request.body.title, request.body.isbn, request.body.image_url, request.body.description, request.body.bookshelf]
 
   client.query(SQL, values)
-    .then(client.query(`SELECT * FROM books`))
-    .then((books) => { response.render('pages/index', { searchResults: books.rows }) });
+    .then(client.query(`SELECT * FROM books`)
+      .then((books) => { response.render('pages/index', { searchResults: books.rows }) }))
   app.use(express.static('./public'));//location for other files like css
 }
 
@@ -116,7 +118,7 @@ function bookDetails(request, response) {
       if (book.rows.length > 0) {
         response.render('pages/details', { book: book.rows[0] });
       } else {
-        response.render('pages/error', { err: 400, errType: 'Bad Request', msg: 'Book not found'})
+        response.render('pages/error', { err: 400, errType: 'Bad Request', msg: 'Book not found' })
       }
     }
     )
