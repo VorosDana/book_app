@@ -77,8 +77,16 @@ section {
   align-items: center;
   flex-flow: column;
   justify-content: space-evenly;
+  background-color: hsl(249, 80%, 97%)
 }
 
-section img {
+img {
   width: 80%;
+  margin-bottom: 1em;
+  border-radius: 10px;
+  border: 2px inset hsl(249, 80%, 97%);
+}
+
+section p {
+  margin-bottom: 1em;
 }

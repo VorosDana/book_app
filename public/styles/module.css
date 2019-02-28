@@ -45,3 +45,25 @@ label button {
 input[type="checkbox"] {
   width: 0px;
 }
+
+.details-button {
+  width: 60%;
+  text-decoration: none;
+}
+
+a div {
+  width: 100%;
+  background-color: hsl(249, 80%, 47%);
+  color: hsl(249, 80%, 97%);
+  text-align: center;
+  padding: .5em;
+  margin: 0px;
+  border: hsl(249, 80%, 47%) outset 5px;
+  border-radius: 5px;
+}
+
+a div h4 {
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
