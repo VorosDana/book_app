@@ -10,8 +10,6 @@ form * {
   border-radius: 5px;
 }
 
-
-
 fieldset {
   width: 80%;
   background-color: #eee;
@@ -30,12 +28,12 @@ li {
   align-items: center;
   background-color: hsl(249, 80%, 97%);
   color: hsl(249, 80%, 47%);
-  padding: 4em 5em 5em;
+  padding: 2em 3em 3em;
   border-radius: 5px;
 }
 
 li a {
-  width: 50%;
+  width: 80%;
 }
 
 li img {
@@ -54,8 +52,8 @@ li p, section p {
 }
 
 .addBook {
-  height: 100%;
-  width: 100%;
+  vertical-align: bottom;
+  width: 95%;
   background-color: hsl(249, 80%, 47%);
   color: hsl(249, 80%, 97%);
   border-radius: 7px;
@@ -77,16 +75,67 @@ section {
   align-items: center;
   flex-flow: column;
   justify-content: space-evenly;
-  background-color: hsl(249, 80%, 97%)
+  position: relative;
+  background-color: hsl(249, 80%, 97%);
+  border-radius: 5px;
+  padding: 1em 1em 4em;
 }
 
 img {
   width: 80%;
-  margin-bottom: 1em;
+  margin: 1em 0;
   border-radius: 10px;
   border: 2px inset hsl(249, 80%, 97%);
 }
 
 section p {
-  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+
+footer {
+  background-color: hsl(249, 80%, 67%);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+footer a {
+  width: 20%;
+}
+
+footer img {
+  background-color: hsl(249, 80%, 87%);
+  border: 3px outset hsl(249, 80%, 87%);
+  border-radius: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+
+  li {
+    width: 40%;
+    margin: 1.5em 0;
+    position: relative;
+  }
+
+  li a {
+    width: 100%;
+  }
+
+  .addBook {
+    position: absolute;
+    bottom: 1em;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  li {
+    width: 30%;
+  }
 }
