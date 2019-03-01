@@ -16,8 +16,7 @@ const PORT = process.env.PORT || 4000;
 app.use(express.urlencoded({ extended: true }));
 
 app.use(methodOverride((request, response) => {
-  if(request.body && typeof request.body === 'object' && '_method' in request.body)
-  {
+  if (request.body && typeof request.body === 'object' && '_method' in request.body) {
     let method = request.body._method;
     delete request.body._method;
     return method;
@@ -48,6 +47,8 @@ app.post('/addToCollection', addToCollection);
 app.get('/books/:id', bookDetails);
 
 app.put('/updateBook', updateBook);
+
+app.delete('/deleteBook', deleteBook);
 
 // Catch-all
 app.get('*', (request, response) => response.render('pages/error', { err: 404, errType: 'Bad Route', msg: 'This Route does not exist' }));
@@ -112,12 +113,11 @@ function createSearch(request, response) {
 }
 
 function addToCollection(request, response) {
-  const SQL = 'INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)'
+  const SQL = 'INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id'
   const values = [request.body.author, request.body.title, request.body.isbn, request.body.image_url, request.body.description, request.body.bookshelf]
 
   client.query(SQL, values)
-    .then(client.query(`SELECT * FROM books`)
-      .then((books) => { response.render('pages/index', { searchResults: books.rows }) }))
+    .then((id) => {response.redirect(`/books/${id.rows[0].id}`) })
   app.use(express.static('./public'));//location for other files like css
 }
 
@@ -128,8 +128,12 @@ function bookDetails(request, response) {
   client.query(SQL, value)
     .then(book => {
       if (book.rows.length > 0) {
-        response.render('pages/details', { book: book.rows[0] });
-      } else {
+        client.query('SELECT DISTINCT bookshelf FROM books;')
+          .then((bookshelves) => {
+            response.render('pages/details', { book: book.rows[0], bookshelves: bookshelves.rows })
+          })
+      }
+      else {
         response.render('pages/error', { err: 400, errType: 'Bad Request', msg: 'Book not found' })
       }
     }
@@ -137,7 +141,7 @@ function bookDetails(request, response) {
 }
 
 function updateBook(request, response) {
-  let {author, title, isbn, image_url, description, bookshelf, id} = request.body;
+  let { author, title, isbn, image_url, description, bookshelf, id } = request.body;
 
   const sql = 'UPDATE books SET author=$1, title=$2, isbn=$3, image_url=$4, description=$5, bookshelf=$6 WHERE id=$7'
   let values = [author, title, isbn, image_url, description, bookshelf, parseInt(id)];
@@ -145,6 +149,16 @@ function updateBook(request, response) {
   client.query(sql, values)
     .then(() => {
       response.redirect(`/books/${id}`);
+    })
+}
+
+function deleteBook(request, response) {
+  let SQL = 'DELETE FROM books WHERE id=$1;';
+  let values = [request.body.id];
+
+  client.query(SQL, values)
+    .then(() => {
+      response.redirect('/')
     })
 }
 
