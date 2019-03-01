@@ -12,6 +12,11 @@
     <h2>Book Details</h2>
 
     <section>
+        <form action="/deleteBook" method="POST" class="DELETE">
+          <input type="hidden" name="_method" value="delete"></input>
+          <input type="hidden" name="id" value=<%- `"${book.id}"` %> >
+          <button type=submit><img src="https://www.freeiconspng.com/uploads/delete-button-png-13.png" width="350" alt="Hd Delete Button Image In Our System" /></button>
+        </form>
       <img src=<%- `"${book.image_url}"` %> alt=<%= book.title %> />
       <p> Title: <%= book.title %> </p>
       <p> Author: <%= book.author %> </p>
@@ -24,20 +29,20 @@
           <input type="checkbox" class="form-hider">Update This Book</input>
 
           <form class="collectionForm" action="/updateBook" method="POST">
-            <input type="hidden" name="id" value=<%- `"${book.id}"` %></input> 
-            <input type="hidden" name="_method" value="put"></input>
+            <input type="hidden" name="id" value=<%- `"${book.id}"` %></input> <input type="hidden" name="_method"
+              value="put"></input>
             <input type="text" name="title" placeholder="Title" value=<%- `"${book.title}"` %>></input>
             <input type="text" name="author" placeholder="Author" value=<%- `"${book.author}"` %>></input>
             <input type="text" name="isbn" placeholder="ISBN" value=<%- `"${book.isbn}"` %>></input>
             <input type="url" name="image_url" placeholder="Image url" value=<%- `"${book.image_url}"` %>></input>
             <input type="text" name="description" placeholder="Description"
               value=<%- `"${book.description}"` %>></input>
-            <select class = bookshelves>
+            <select class=bookshelves>
               <% bookshelves.forEach( shelf =>{ %>
-                <%- include('../layout/bookshelf_option', {shelf: shelf.bookshelf}) %>
+              <%- include('../layout/bookshelf_option', {shelf: shelf.bookshelf, selected: book.bookshelf}) %>
               <% }) %>
             </select>
-            <input type="text" name="bookshelf" placeholder="Bookshelf"></input>
+            <input type="text" name="bookshelf" placeholder="Bookshelf" value=<%- `"${book.bookshelf}"` %>></input>
 
             <button type="submit" class="start">Add to Database</button>
           </form>

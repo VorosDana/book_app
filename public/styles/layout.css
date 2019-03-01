@@ -94,7 +94,7 @@ section p {
 
 footer {
   background-color: hsl(249, 80%, 67%);
-  position: fixed;
+  position: sticky;
   bottom: 0;
   display: flex;
   flex-flow: row nowrap;
@@ -132,6 +132,26 @@ footer img {
     position: absolute;
     bottom: 1em;
   }
+}
+
+.DELETE {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+.DELETE button {
+  background-color: unset;
+  width: unset;
+  padding: unset;
+  color: unset;
+  border: unset;
+
+}
+
+.DELETE img {
+  width: 5em;
+  border: 10px solid hsl(249, 80%, 47%);
+  border-radius: 50%;
 }
 
 @media only screen and (min-width: 960px) {
