@@ -94,7 +94,7 @@ section p {
 
 footer {
   background-color: hsl(249, 80%, 67%);
-  position: sticky;
+  position: fixed;
   bottom: 0;
   display: flex;
   flex-flow: row nowrap;
@@ -149,13 +149,36 @@ footer img {
 }
 
 .DELETE img {
-  width: 5em;
-  border: 10px solid hsl(249, 80%, 47%);
+  width: 7vw;
+  border: 2px solid hsl(249, 80%, 47%);
   border-radius: 50%;
 }
 
 @media only screen and (min-width: 960px) {
   li {
     width: 30%;
+  }
+
+  footer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 0;
+  }
+  
+  footer a {
+    width: 10vh;
+  }
+  
+  footer img {
+    background-color: hsl(249, 80%, 87%);
+    border: 3px outset hsl(249, 80%, 87%);
+    border-radius: 5px;
+  }
+
+  .DELETE img {
+    width: 5vw;
+    border: 2px solid hsl(249, 80%, 47%);
+    border-radius: 50%;
   }
 }
