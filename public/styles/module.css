@@ -20,6 +20,14 @@ button {
   border: 0px;
 }
 
+select {
+  padding: 1em;
+  width: 40%;
+  background-color: hsl(249, 80%, 87%);
+  color: hsl(249, 80%, 47%);
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
 
 .collectionForm {
   visibility: hidden;
@@ -66,8 +74,4 @@ a div h4 {
   width: 100%;
   padding: 0px;
   margin: 0px;
-}
-
-@media only screen and (min-width: 768px) {
-  
 }

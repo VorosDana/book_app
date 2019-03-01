@@ -42,7 +42,7 @@
               <%- include('../layout/bookshelf_option', {shelf: shelf.bookshelf, selected: book.bookshelf}) %>
               <% }) %>
             </select>
-            <input type="text" name="bookshelf" placeholder="Bookshelf" value=<%- `"${book.bookshelf}"` %>></input>
+            <input type="text" name="bookshelf" placeholder="New Bookshelf" value=<%- `"${book.bookshelf}"` %>></input>
 
             <button type="submit" class="start">Add to Database</button>
           </form>

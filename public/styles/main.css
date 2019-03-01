@@ -5,6 +5,7 @@
 body {
   background-color: hsl(249, 80%, 87%);
   font-family: sans-serif;
+  min-height: 100vh;
 }
 
 header {
