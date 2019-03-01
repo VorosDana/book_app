@@ -24,18 +24,19 @@ h2 {
 }
 
 h3 {
-  font-size: 3em;
+  font-size: 1.5em;
+  font-weight: bold;
   width: 90%;
   margin-bottom: 0.5em;
   font-style: italic;
-  max-height: 3.3em;
-  overflow-y: auto;
+  max-height: 4em;
+  overflow: auto;
 }
 
 h4 {
-  font-size: 2em;
+  font-size: 1em;
+  font-style: italic;
   width: 80%; 
   margin-bottom: 1em;
-  font-weight: bold;
 }
 
