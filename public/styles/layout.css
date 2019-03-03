@@ -46,7 +46,7 @@ li * {
 
 
 li p, section p {
-  max-height: 11.3em;
+  max-height: 4.3em;
   overflow-y: auto;
   width: 85%;
 }
@@ -134,18 +134,25 @@ footer img {
   }
 }
 
-.DELETE {
-  position: absolute;
+li .DELETE {
+  /* position: absolute;
   top: 1em;
-  left: 1em;
+  left: 1em; */
+  margin: 0;
+  padding: 0;
+  width: 40%;
+  display: inline-block;
+  padding: 0.5rem
 }
 .DELETE button {
   background-color: unset;
-  width: unset;
+  width: 100%;
   padding: unset;
   color: unset;
   border: unset;
-
+  margin: unset;
+  font-size: 0.888888889rem;
+  font-style: italic;
 }
 
 .DELETE img {

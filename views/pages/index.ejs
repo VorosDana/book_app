@@ -2,28 +2,41 @@
 
 <html>
 
-  <%- include ../layout/head.ejs %>
+<%- include ../layout/head.ejs %>
 
-  <body>
+<body>
 
-    <%- include ../layout/header.ejs %>
+  <%- include ../layout/header.ejs %>
 
-    <main>
-      <h2>Your bookshelf: <%= searchResults.length %> Books</h2>
-      <ul>
+  <main>
+    <h2>Your bookshelf: <%= searchResults.length %> Books</h2>
+    <ul>
       <% searchResults.forEach(book => { %>
       <li class=<%= book.bookshelf %>>
-        <a href= <%= `/books/${book.id}` %>><img src= <%- `"${book.image_url}"` %> alt= <%= book.title %> /></a>
+        <a href=<%= `/books/${book.id}` %>><img src=<%- `"${book.image_url}"` %> alt=<%= book.title %> /></a>
         <h3> <%= book.title %> </h3>
         <h4> <%= book.author %> </h4>
         <p> <%= book.description %> </p>
-        <a href=<%= `/books/${book.id}` %> class="details-button"><div><h4>See Book Details</h4></div></a>
+        <div class="formatting">
+          <a href=<%= `/books/${book.id}` %> class="details-button">
+            <div>
+              <h4>See Book Details</h4>
+            </div>
+          </a>
+
+          <form action="/deleteBook" method="POST" class="DELETE">
+            <input type="hidden" name="_method" value="delete"></input>
+            <input type="hidden" name="id" value=<%- `"${book.id}"` %>>
+            <button type=submit>Delete Book</button>
+          </form>
+        </div>
       </li>
       <% }) %>
     </ul>
-    </main>
+  </main>
 
-    <%- include ../layout/footer.ejs %>
+  <%- include ../layout/footer.ejs %>
 
-  </body>
+</body>
+
 </html>
