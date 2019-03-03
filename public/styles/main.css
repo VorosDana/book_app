@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+main {
+  padding-bottom: 5em;
+}
+
 body {
   background-color: hsl(249, 80%, 87%);
   font-family: sans-serif;

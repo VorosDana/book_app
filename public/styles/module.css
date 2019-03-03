@@ -55,11 +55,20 @@ input[type="checkbox"] {
 }
 
 .details-button {
-  width: 60%;
+  width: 40%;
   text-decoration: none;
+  display: inline-block;
 }
 
-a div {
+.details-button div {
+  padding: 0.5rem;
+}
+
+.details-button h4 {
+  font-size: 1rem;
+}
+
+li div, .DELETE {
   width: 100%;
   background-color: hsl(249, 80%, 47%);
   color: hsl(249, 80%, 97%);
@@ -74,4 +83,9 @@ a div h4 {
   width: 100%;
   padding: 0px;
   margin: 0px;
+}
+
+div.formatting {
+  background-color: unset;
+  border: unset;
 }

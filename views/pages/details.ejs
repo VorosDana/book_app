@@ -12,11 +12,6 @@
     <h2>Book Details</h2>
 
     <section>
-        <form action="/deleteBook" method="POST" class="DELETE">
-          <input type="hidden" name="_method" value="delete"></input>
-          <input type="hidden" name="id" value=<%- `"${book.id}"` %> >
-          <button type=submit><img src="https://www.freeiconspng.com/uploads/delete-button-png-13.png" width="350" alt="Hd Delete Button Image In Our System" /></button>
-        </form>
       <img src=<%- `"${book.image_url}"` %> alt=<%= book.title %> />
       <p> Title: <%= book.title %> </p>
       <p> Author: <%= book.author %> </p>
@@ -44,7 +39,7 @@
             </select>
             <input type="text" name="bookshelf" placeholder="New Bookshelf" value=<%- `"${book.bookshelf}"` %>></input>
 
-            <button type="submit" class="start">Add to Database</button>
+            <button type="submit" class="start">Update</button>
           </form>
         </label>
       </div>
